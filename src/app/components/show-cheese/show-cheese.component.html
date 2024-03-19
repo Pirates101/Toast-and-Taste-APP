@@ -1,0 +1,39 @@
+@if (cheeses$ | async; as cheeses){
+    <table>
+        <thead>
+            <tr>
+                <th>Kind</th>
+                <th>Price</th>
+                <th>Wine Pair</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(cheese of cheeses; track cheese.id){
+                <tr>
+                    <td>{{cheese.kind}}</td>
+                    <td>{{cheese.price}}</td>
+                    <td>{{cheese.winePair}}</td>
+
+
+                    <td>
+                        <button (click)="routeToCheese(cheese.id)">Details</button>
+                    </td>
+
+                    <td>
+                        <button (click)="updateCheese(cheese.id, cheese)">Update Ticket</button>
+                    </td>
+
+                    <td>
+                        <button (click)="deleteCheese(cheese.id)">🗑️</button>
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+} @else {
+    <p>There are no cheeses to display</p>
+}
+
+
