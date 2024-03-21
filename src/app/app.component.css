@@ -1,0 +1,27 @@
+nav {
+    display: flex;
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: gray;
+  
+    a {
+      text-decoration: underline;
+      color: lightblue;
+      cursor: pointer;
+  
+      &:visted {
+        color: rgb(201, 28, 201);
+      }
+  
+      &:hover {
+        color: blue;
+      }
+    }
+  }
+  
+  main {
+    width: 100vw;
+    height: 96vh;
+  }

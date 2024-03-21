@@ -1,7 +1,13 @@
 <nav>
   <a [routerLink]="'/cheeses'">Cheeses 🧀</a>
+  @if (this.currentUser == ''){
+    <a [routerLink]="'/userlogging'">Sign In</a>
+  }
+  @else {
+    <a [routerLink]="'/favorites'">Favorites 💖</a>
+    <a [routerLink]="['/userform/', this.currentUser]">Profile 👤</a>
+  }
 </nav>
-
 <main>
-  <router-outlet></router-outlet>
+  <router-outlet />
 </main>
