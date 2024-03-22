@@ -24,8 +24,8 @@ export const routes: Routes = [
     {
         path: 'wineRecommendation',
         component: ShowWineRecommendationComponent
-    }
-
+    },
+	{
 		path: 'favorites',
 		component:FavoritesComponent
 	},
