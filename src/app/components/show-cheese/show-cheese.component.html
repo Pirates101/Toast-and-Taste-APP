@@ -16,15 +16,11 @@
 
 
                     <td>
-                        <button (click)="routeToCheese(cheese.id)">Details</button>
+                        <button (click)="routeToDetails(cheese.id)">Wine Details</button>
                     </td>
 
                     <td>
-                        <button (click)="updateCheese(cheese.id, cheese)">Update Ticket</button>
-                    </td>
-
-                    <td>
-                        <button (click)="deleteCheese(cheese.id)">🗑️</button>
+                        <button (click)="updateFavorites(cheese.id, cheese)">Save to Favorites</button>
                     </td>
 
                 </tr>

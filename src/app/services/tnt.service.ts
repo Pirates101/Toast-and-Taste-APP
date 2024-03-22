@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { Cheese, PostCheese } from '../models/cheese';
 import { Observable } from 'rxjs';
+import { ShowCheeseComponent } from '../components/show-cheese/show-cheese.component';
+import { Favorite } from '../models/favorite';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,10 @@ export class TntService {
 
   getCheeses() {
     return this.httpClient.get<Cheese[]>(this.baseUrl)
+  }
+
+  getFavorites(){
+    return this.httpClient.get<ShowCheeseComponent[]>(this.baseUrl)
   }
 
   updateCheese(updatedCheese: Cheese,id: number | null) {
@@ -31,5 +37,9 @@ export class TntService {
 
   getTicket(id: number): Observable<Cheese> {
     return this.httpClient.get<Cheese>(`${this.baseUrl}/${id}`);
+  }
+
+  postFavorite(newFav: Favorite): Observable<Favorite> {
+    return this.httpClient.post<Favorite>(this.baseUrl, newFav);
   }
 }
