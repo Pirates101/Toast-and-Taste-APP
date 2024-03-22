@@ -33,6 +33,10 @@ export const routes: Routes = [
 		path: 'userlogging',
 		component: UserLoggingComponent
 	},
+	{
+		path: 'userform',
+		component: UserFormComponent
+	},
     {
 		path: 'userform/:username',
 		component: UserFormComponent
