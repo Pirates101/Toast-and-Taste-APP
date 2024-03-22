@@ -1,5 +1,9 @@
 <nav>
   <a [routerLink]="'/cheeses'">Cheeses 🧀</a>
+
+  <a [routerLink]="'/wineDescription'">Get wine description </a>
+  <a [routerLink]="'/wineRecommendation'">Get wine recommendation 🍷</a>
+
   @if (this.currentUsername){
     <a [routerLink]="'/favorites'">Favorites 💖</a>
     <div class="dropdown" style="float:right;">
@@ -20,6 +24,7 @@
       </div>
     </div>    
   }
+
 </nav>
 <main>
   <router-outlet />

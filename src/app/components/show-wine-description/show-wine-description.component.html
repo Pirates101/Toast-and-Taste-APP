@@ -1,0 +1,11 @@
+<form (ngSubmit)="handleSubmit()">
+    <label for="wineQuery">Search for a wine</label>
+    <input type="text" name="wineQuery" [(ngModel)]="wineQuery"/>
+    <button type="submit">Get description</button>
+</form>
+
+@if (wineDescription | async; as wineDescription) {
+    <p>{{wineDescription.wineDescription}}</p>
+} @else {
+    <p>Enter a wine name to get a description</p>
+}
