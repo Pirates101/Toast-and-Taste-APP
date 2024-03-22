@@ -1,1 +1,24 @@
-<p>favorites works!</p>
+<p>Preferred Wines and Rinds 🍷🧀</p>
+@if (favorites$ | async; as favorite) {
+	<table>
+	  <thead>
+		<tr>
+		  <th></th>
+		
+		  <th>Favorite Combinations</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		@for (favorite of favorite; track favorite) {
+		  <tr>
+			<td>{{ favorite.id }}</td>
+			<td>{{ favorite.markedDate }}</td>
+		  </tr>
+		}
+	  </tbody>
+	</table>
+  } @else { 
+	<div>
+	  <h2>Loading the goods...</h2>
+	</div>
+  }
