@@ -3,6 +3,8 @@ import { TntService } from '../../services/tnt.service';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Cheese } from '../../models/cheese';
+import { Favorite } from '../../models/favorite';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'app-show-cheese',
@@ -15,27 +17,28 @@ export class ShowCheeseComponent {
 
   constructor(
     private tntService: TntService,
+    private favoritesService: FavoritesService,
     private router: Router
   ) {}
 
-  cheeses$ = this.tntService.getCheeses();
+  cheeses$ = this.tntService.getCheeses(); 
+  favoritePairings$ = this.tntService.getFavorites(); 
 
   getCheese(id: number) {
     this.router.navigate(['cheese', id]);
   }
 
-  deleteCheese(id: number) {
-
-    this.tntService.deleteCheese(id).subscribe(() => {
-      this.cheeses$ = this.tntService.getCheeses();
-    })
+  updateFavorites(id: number, cheese: Cheese) {
+    this.router.navigate(['update-favorites', id], { queryParams: cheese });
   }
 
-  updateCheese(id: number, cheese: Cheese) {
-    this.router.navigate(['update-cheese', id], { queryParams: cheese });
+  routeToDetails(id: number) {
+    this.router.navigate(['cheese', id]);    
   }
 
-  routeToCheese(id: number) {
-    this.router.navigate(['cheese', id]);
-  }
-}
+  favorite(id: Favorite){
+    this.tntService.postFavorite(id).subscribe(() => {
+      this.favoritePairings$ = this.tntService.getFavorites();
+    });
+  }}
+
