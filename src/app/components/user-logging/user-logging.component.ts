@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { User } from '../../models/user';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-logging',
@@ -12,17 +14,34 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-logging.component.css'
 })
 export class UserLoggingComponent {
-  constructor(private router: Router,
-    private usersService: UsersService) { }
+  
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private usersService: UsersService) { }
+  
+  username: string = '';
+  userpassword: string = '';
+  paramsSubscription!: Subscription 
+  userInfo: User | null = null;
 
-username: string = '';
-userpassword: string = '';
 
-
-
-userLogging(){
-
-
-}
-
+  userLogging(){
+    if (this.username && this.userpassword){
+      this.paramsSubscription = this.activatedRoute.params.subscribe(() => {
+        this.usersService.getUser(this.username).subscribe(user => {
+          this.userInfo = user;
+          if (this.userInfo != null){
+            this.usersService.currentUserId = this.userInfo.id;
+            this.usersService.currentUsername = this.userInfo.username;
+            this.router.navigate(['favorites']);
+          }
+          else{
+            this.usersService.currentUserId = 0;
+            this.usersService.currentUsername = "";
+            this.router.navigate(['userform']);
+          }  
+        })
+      })      
+    }
+  }
 }

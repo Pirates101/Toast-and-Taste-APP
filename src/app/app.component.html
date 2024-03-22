@@ -1,11 +1,24 @@
 <nav>
   <a [routerLink]="'/cheeses'">Cheeses 🧀</a>
-  @if (this.currentUser == ''){
-    <a [routerLink]="'/userlogging'">Sign In</a>
+  @if (this.currentUsername){
+    <a [routerLink]="'/favorites'">Favorites 💖</a>
+    <div class="dropdown" style="float:right;">
+      <button class="dropbtn">👤</button>
+      <div class="dropdown-content">
+        <a [routerLink]="['/userform/', this.currentUsername]">Edit profile</a>
+        
+        <a [routerLink]="'/userlogoff'">Log out</a>
+      </div>
+    </div>
   }
   @else {
-    <a [routerLink]="'/favorites'">Favorites 💖</a>
-    <a [routerLink]="['/userform/', this.currentUser]">Profile 👤</a>
+    <div class="dropdown" style="float:right;">
+      <button class="dropbtn">👤</button>
+      <div class="dropdown-content">
+        <a [routerLink]="'/userlogging'">Log in</a>
+        <a [routerLink]="'/userform'">Sign up</a>
+      </div>
+    </div>    
   }
 </nav>
 <main>

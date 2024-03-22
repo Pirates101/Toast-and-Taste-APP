@@ -14,6 +14,9 @@ export class UsersService {
 
   baseUrl = `${environment.apiDomain}/api/User`;
 
+  currentUserId: number = 0;
+  currentUsername: string = '';
+
   getUsers() {
     return this.httpClient.get<User[]>(this.baseUrl)
   }

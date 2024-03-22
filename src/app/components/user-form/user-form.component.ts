@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-user-form',
@@ -26,24 +28,30 @@ export class UserFormComponent {
   lastname: string = '';
   confirmpassword: string = '';
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      if (params['id']) {
-        this.id = params['id'];
+  paramsSubscription!: Subscription;
+  userInfo: User | null = null;
 
-        this.activatedRoute.queryParams.subscribe((queryParams) => {
-          this.username = queryParams['username'];
-          this.firstname = queryParams['firstname'];
-          this.lastname = queryParams['lastname'];
-          this.email = queryParams['email'];
-          this.userpassword = queryParams['userpassword'];
+  
+  ngOnInit(): void {
+    if (this.usersService.currentUsername){
+      this.paramsSubscription = this.activatedRoute.params.subscribe(() => {
+        this.usersService.getUser(this.usersService.currentUsername).subscribe(user => {
+          this.userInfo = user;
+          if (this.userInfo != null){
+            this.id = this.userInfo.id;
+            this.username = this.userInfo.username;
+            this.firstname = this.userInfo.firstName;
+            this.lastname = this.userInfo.lastName;
+            this.email = this.userInfo.email;
+            this.userpassword = this.userInfo.userPassword;
+          }  
         })
-      }
-    })
+      })
+    }    
   }
 
   submituserform(){
-    if (this.id) {
+    if (this.usersService.currentUsername) {
       this.updateUser();
     } else {
       this.addUser();
@@ -55,30 +63,29 @@ export class UserFormComponent {
       id: this.id!,
       username: this.username,
       email: this.email,
-      firstname: this.firstname,
-      lastname: this.lastname,
-      userpassword: this.userpassword
+      firstName: this.firstname,
+      lastName: this.lastname,
+      userPassword: this.userpassword
     }
 
     this.usersService.updateUser(updatedUser, this.id!).subscribe(() => {
-      this.router.navigate(['userlogging']);
+      this.router.navigate(['favorites']);
     })
   }
 
-  addUser() {
-
-    
+  addUser() {    
     const newUser = {
       username: this.username,
       email: this.email,
-      firstname: this.firstname,
-      lastname: this.lastname,      
-      userpassword: this.userpassword
+      firstName: this.firstname,
+      lastName: this.lastname,
+      userPassword: this.userpassword
     };
 
-    this.usersService.postUser(newUser).subscribe(() => {
-      this.router.navigate(['userlogging']);
+    this.usersService.postUser(newUser).subscribe(params => {
+      this.usersService.currentUserId = params['id']
+      this.usersService.currentUsername = this.username;
+      this.router.navigate(['cheeses']);      
     });
   }
-
 }
