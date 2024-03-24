@@ -13,7 +13,7 @@ import { FavoritesService } from '../../services/favorites.service';
   templateUrl: './show-cheese.component.html',
   styleUrl: './show-cheese.component.css'
 })
-export class ShowCheeseComponent {
+export class ShowCheeseComponent  {
 
   constructor(
     private tntService: TntService,
@@ -24,20 +24,23 @@ export class ShowCheeseComponent {
   cheeses$ = this.tntService.getCheeses(); 
   favoritePairings$ = this.tntService.getFavorites(); 
 
-  getCheese(id: number) {
-    this.router.navigate(['cheese', id]);
-  }
-
-  updateFavorites(id: number, cheese: Cheese) {
+ updateFavorites(id: number, cheese: Cheese) {
     this.router.navigate(['update-favorites', id], { queryParams: cheese });
   }
 
+  deleteCheese(id: number) {
+    this.tntService.deleteCheese(id).subscribe(() => {
+      this.cheeses$ = this.tntService.getCheeses();
+    })
+  }
+  
   routeToDetails(id: number) {
     this.router.navigate(['cheese', id]);    
   }
 
-  favorite(id: Favorite){
+  favoritePairings(id: Favorite){
     this.tntService.postFavorite(id).subscribe(() => {
+      this.cheeses$ = this.tntService.getCheeses();
       this.favoritePairings$ = this.tntService.getFavorites();
     });
   }}

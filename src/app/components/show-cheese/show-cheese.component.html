@@ -1,35 +1,39 @@
-@if (cheeses$ | async; as cheeses){
+@if (cheeses$ | async; as cheese){
+    <div>
+        <h1>Recommended Pairings</h1>
     <table>
         <thead>
             <tr>
                 <th>Kind</th>
                 <th>Price</th>
-                <th>Wine Pair</th>
+                <th>Wine Recommendation</th>
             </tr>
         </thead>
         <tbody>
-            @for(cheese of cheeses; track cheese.id){
+            @for(cheeseItem of cheese; let idx = $index; track cheeseItem){
                 <tr>
-                    <td>{{cheese.kind}}</td>
-                    <td>{{cheese.price}}</td>
-                    <td>{{cheese.winePair}}</td>
-
-
-                    <td>
-                        <button (click)="routeToDetails(cheese.id)">Wine Details</button>
-                    </td>
-
-                    <td>
-                        <button (click)="updateFavorites(cheese.id, cheese)">Save to Favorites</button>
-                    </td>
-
-                </tr>
-
-            }
-        </tbody>
-    </table>
-} @else {
-    <p>There are no cheeses to display</p>
-}
-
-
+                    <td>{{cheeseItem.kind}}</td>
+                    <td>{{cheeseItem.price}}</td>
+                    <td>{{cheeseItem.winePair}}</td>
+                    <!-- <td>{{ idx + 1 }}. <a [routerLink]="['/cheese/', cheeseItem.id]">{{cheeseItem.winePair}}</a></td> -->
+                 <td>
+                     <button (click)="deleteCheese(cheeseItem.id)">🗑️</button>
+                 </td>
+                 <td>
+                 </td>
+                 @if(!cheeseItem.isFavorite){
+                     <td>
+                        <button (click)="favoritePairings(cheeseItem.isFavorite)">❤️</button>
+                     </td>                     
+                 }                 
+             </tr>
+         }
+         <br>
+         <a [routerLink]="'/favorites/'">Favorite Pairings</a>
+         </tbody>
+     </table>
+ </div>
+ }
+ @else {
+     <h1>Pairing list empty!!!</h1>
+ }
