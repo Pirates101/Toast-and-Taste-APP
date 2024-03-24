@@ -1,12 +1,13 @@
 <form (ngSubmit)="userLogging()">
+    <h2>Log in</h2>
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" name="username" [(ngModel)]="username" />
+        <input type="text" name="username" placeholder="Username" [(ngModel)]="username" />
     </div>
   
     <div class="form-group">
         <label for="userpassword">Password</label>
-        <input type="password" name="userpassword" [(ngModel)]="userpassword" />  
+        <input type="password" name="userpassword" placeholder="Password" [(ngModel)]="userpassword" />  
     </div>
     
     <div>

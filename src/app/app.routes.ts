@@ -9,6 +9,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserLogOffComponent } from './components/user-log-off/user-log-off.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { UserPasswordComponent } from './components/user-password/user-password.component';
 
 
 export const routes: Routes = [
@@ -40,6 +41,10 @@ export const routes: Routes = [
     {
 		path: 'userform/:username',
 		component: UserFormComponent
+	},
+	{
+		path: 'userpassword',
+		component: UserPasswordComponent
 	},
     {
 		path: 'userlogoff',

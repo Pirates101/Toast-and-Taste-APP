@@ -11,9 +11,10 @@ import { UsersService } from '../../services/users.service';
 export class UserLogOffComponent {
   constructor(private usersService: UsersService){
     this.usersService.currentUserId = 0;
-    this.usersService.currentUsername = "";
+    this.usersService.currentUsername = "";   
+    this.usersService.currentEmail = "";
+    this.usersService.currentFirstName = "";
+    this.usersService.currentLastName = "";        
+    this.usersService.currentPassword = "";
   }
-
-  
-
 }

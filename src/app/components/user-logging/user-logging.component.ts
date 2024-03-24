@@ -24,24 +24,30 @@ export class UserLoggingComponent {
   paramsSubscription!: Subscription 
   userInfo: User | null = null;
 
-
   userLogging(){
     if (this.username && this.userpassword){
       this.paramsSubscription = this.activatedRoute.params.subscribe(() => {
         this.usersService.getUser(this.username).subscribe(user => {
           this.userInfo = user;
-          if (this.userInfo != null){
-            this.usersService.currentUserId = this.userInfo.id;
-            this.usersService.currentUsername = this.userInfo.username;
-            this.router.navigate(['favorites']);
-          }
-          else{
-            this.usersService.currentUserId = 0;
-            this.usersService.currentUsername = "";
-            this.router.navigate(['userform']);
-          }  
+          if (this.userInfo != null ){
+            if(this.userInfo.userPassword.trim() == this.userpassword.trim()){
+              this.usersService.currentUserId = this.userInfo.id;
+              this.usersService.currentUsername = this.userInfo.username;  
+              this.usersService.currentEmail = this.userInfo.email;
+              this.usersService.currentFirstName = this.userInfo.firstName;
+              this.usersService.currentLastName = this.userInfo.lastName;
+              this.usersService.currentPassword = this.userInfo.userPassword;      
+              this.router.navigate(['favorites']);
+            }
+            else {
+              alert('User or password invalid');
+            }            
+          }               
         })
-      })      
+      })     
+    }
+    else{
+      alert('Please enter your credential to log in');
     }
   }
 }
