@@ -22,5 +22,21 @@ export class AppComponent {
   get currentUserId(){
     return this.usersService.currentUserId;
   }
+
+  get currentFirstName(){
+    return this.usersService.currentFirstName;
+  }
+
+  get currentLastName(){
+    return this.usersService.currentLastName;
+  }
+
+  get currentEmail(){
+    return this.usersService.currentEmail;
+  }
+
+  get currentPassword(){
+    return this.usersService.currentPassword;
+  }
   
 }

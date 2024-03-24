@@ -7,7 +7,7 @@
   @if (this.currentUsername){
     <a [routerLink]="'/favorites'">Favorites 💖</a>
     <div class="dropdown" style="float:right;">
-      <button class="dropbtn">👤</button>
+      <button class="dropbtn">{{this.currentFirstName}} {{this.currentLastName}} 👤</button>
       <div class="dropdown-content">
         <a [routerLink]="['/userform/', this.currentUsername]">Edit profile</a>
         <a [routerLink]="'/userpassword'">Change password</a>        
