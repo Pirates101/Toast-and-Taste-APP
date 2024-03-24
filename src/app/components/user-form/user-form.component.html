@@ -1,38 +1,41 @@
 <form (ngSubmit)="submituserform()">
 
+    @if(this.id == null){
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" placeholder="Username" [(ngModel)]="username" />
+        </div>    
+    }
+
     <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" name="username" [(ngModel)]="username" />
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname" placeholder="First Name" [(ngModel)]="firstname" />
     </div>
 
     <div class="form-group">
-        <label for="firstname">First Name:</label>
-        <input type="text" name="firstname" [(ngModel)]="firstname" />
-    </div>
-
-    <div class="form-group">
-        <label for="lastname">Last Name:</label>
-        <input type="text" name="lastname" [(ngModel)]="lastname" />
+        <label for="lastname">Last Name</label>
+        <input type="text" name="lastname" placeholder="Last Name" [(ngModel)]="lastname" />
     </div>
     
     <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="text" name="email" [(ngModel)]="email" />
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Email" [(ngModel)]="email" />
     </div>
   
-    <div class="form-group">
-        <label for="userpassword">Password:</label>
-        <input type="password" name="userpassword" [(ngModel)]="userpassword" /> 
-    </div>
-        
-    <div class="form-group">
-        <label for="confirmpassword">Confirm Password:</label>
-        <input type="password" name="confirmpassword" [(ngModel)]="confirmpassword" />
-    </div>
+    @if(this.id == null){
+        <div class="form-group">
+            <label for="userpassword">Password</label>
+            <input type="password" name="userpassword" placeholder="Password" [(ngModel)]="userpassword" /> 
+        </div>
+            
+        <div class="form-group">
+            <label for="confirmpassword">Confirm Password</label>
+            <input type="password" name="confirmpassword" placeholder="Confirm Password"[(ngModel)]="confirmpassword" />
+        </div>
+    }
      
     <div>
         <button type="submit">Save</button>
-        <button type="button">Cancel</button>
     </div>
     
   </form>

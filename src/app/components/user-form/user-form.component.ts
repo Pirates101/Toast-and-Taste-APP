@@ -69,23 +69,33 @@ export class UserFormComponent {
     }
 
     this.usersService.updateUser(updatedUser, this.id!).subscribe(() => {
+      alert("Profile has been updated.");
       this.router.navigate(['favorites']);
     })
   }
 
-  addUser() {    
-    const newUser = {
-      username: this.username,
-      email: this.email,
-      firstName: this.firstname,
-      lastName: this.lastname,
-      userPassword: this.userpassword
-    };
-
-    this.usersService.postUser(newUser).subscribe(params => {
-      this.usersService.currentUserId = params['id']
-      this.usersService.currentUsername = this.username;
-      this.router.navigate(['cheeses']);      
-    });
+  addUser() {   
+    if (this.userpassword != this.confirmpassword){
+      alert("Password and confirmed password do not match, please try again.");
+    } 
+    else {
+      const newUser = {
+        username: this.username,
+        email: this.email,
+        firstName: this.firstname,
+        lastName: this.lastname,
+        userPassword: this.userpassword
+      };
+  
+      this.usersService.postUser(newUser).subscribe(params => {
+        this.usersService.currentUserId = params['id']
+        this.usersService.currentUsername = this.username;
+        this.usersService.currentEmail = this.email;
+        this.usersService.currentFirstName = this.firstname;
+        this.usersService.currentLastName = this.lastname;
+        this.usersService.currentPassword = this.userpassword;
+        this.router.navigate(['cheeses']);      
+      });
+    }
   }
 }
