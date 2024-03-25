@@ -9,3 +9,9 @@ export interface WineRecommendation {
     ratingCount: number
     score: number
 }
+
+export interface WineRecommendationResponse {
+    recommendedWines: WineRecommendation[]
+    totalFound: number
+
+}

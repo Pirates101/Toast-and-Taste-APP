@@ -5,9 +5,11 @@
 </form>
 
 @if (wineRecommendation$ | async; as wineRecommendation) {
-    <p>{{wineRecommendation.title}}</p>
-    <p>{{wineRecommendation.averageRating}}</p>
-    <p>{{wineRecommendation.description}}</p>
+@if (wineRecommendation.recommendedWines.length > 0){
+    <h2>Recommendations</h2>
+    <p>{{ wineRecommendation.recommendedWines[0].title }} <button (click)="routeToWineRecommendation(wineRecommendation.recommendedWines[0].id)"> Details </button></p>
+    <p>{{ wineRecommendation.recommendedWines[1].title }}</p>
+}
 
 } @else {
     <p>Enter a wine name to get a recommendation</p>

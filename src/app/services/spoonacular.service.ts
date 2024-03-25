@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { WineDesription } from '../models/wine-desription';
-import { WineRecommendation } from '../models/wine-recommendation';
+import { WineRecommendation, WineRecommendationResponse } from '../models/wine-recommendation';
 
 @Injectable({
   providedIn: 'root'
@@ -33,19 +33,15 @@ export class SpoonacularService {
     });
   }
 
-  getWineRecommendation(wineQuery: string): Observable<WineRecommendation> {
+  getWineRecommendation(wineQuery: string): Observable<WineRecommendationResponse> {
 
-    const headerDict = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    }
+    
   let httpHeaders = new HttpHeaders()
 
   httpHeaders = httpHeaders.set('x-api-key', 'f2551da4c5434cc4bf924c531e035982');
 
 
-    return this.httpClient.get<WineRecommendation>(`${this.baseUrl}/recommendation?wine=${wineQuery}&number=1`, {
+    return this.httpClient.get<WineRecommendationResponse>(`${this.baseUrl}/recommendation?wine=${wineQuery}&number=2`, {
       headers: httpHeaders,
       observe: 'body',
       responseType: 'json',
