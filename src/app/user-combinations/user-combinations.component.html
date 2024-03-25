@@ -1,0 +1,18 @@
+<form (ngSubmit)="userCombinationSubmit()">
+
+    <div class="form-group">
+		<label for="title">Cheese</label>
+		<input type="number" id="Cheese" [(ngModel)]="Cheese" name="Cheese" required>
+	</div>
+    <div class="form-group">
+		<label for="title">Wine</label>
+		<input type="text" id="Wine" [(ngModel)]="Wine" name="Wine" required>
+	</div>
+    <div class="form-group">
+		<label for="title">Taste Notes</label>
+		<input type="text" id="tasteNotes" [(ngModel)]="Notes" name="tasteNotes" required>
+	</div>
+
+</form>
+  <button (click)="saveCombination()">Save Combination</button>
+  
