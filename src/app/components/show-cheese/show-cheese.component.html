@@ -4,8 +4,7 @@
     <table>
         <thead>
             <tr>
-                <th>Cheese Type</th>                
-                <th>Price</th>
+                <th>Cheese Type</th>    
                 <th>Wine Recommendation</th>
             </tr>
         </thead>
@@ -13,14 +12,15 @@
             @for(cheeseItem of cheese; let idx = $index; track cheeseItem){
                 <tr>
                     <td>{{cheeseItem.kind}}</td>
-                    <td>{{cheeseItem.price}}</td>
                     <td>{{cheeseItem.winePair}}</td>                 
                  <td>
-                 </td>
+                    <td>
+                        <button (click)="deleteCheese(cheeseItem.id)">🗑️</button>
+                    </td>                
                  @if(!cheeseItem.isFavorite){
                      <td>
                         <button (click)="favoritePairings({cheeseid: cheeseItem.id, userid: 2, id:0})">❤️</button>
-                     </td>                     
+                     </td>           
                  }                 
              </tr>
          }
@@ -31,5 +31,5 @@
  </div>
  }
  @else {
-     <h1>Pairing list empty!!!</h1>
+     <h1>Toast and Taste</h1>
  }

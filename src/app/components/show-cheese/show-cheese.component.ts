@@ -24,9 +24,9 @@ export class ShowCheeseComponent  {
   cheeses$ = this.tntService.getCheeses(); 
   favoritePairings$ = this.tntService.getFavorites(); 
 
-//  updateFavorites(id: number, cheese: Cheese) {
-//     this.router.navigate(['update-favorites', id], { queryParams: cheese });
-//   }
+ updateFavorites(id: number, cheese: Cheese) {
+    this.router.navigate(['update-favorites', id], { queryParams: cheese });
+  }
 
   deleteCheese(id: number) {
     this.tntService.deleteCheese(id).subscribe(() => {
