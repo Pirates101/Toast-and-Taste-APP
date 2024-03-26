@@ -4,7 +4,7 @@
     <table>
         <thead>
             <tr>
-                <th>Kind</th>
+                <th>Cheese Type</th>                
                 <th>Price</th>
                 <th>Wine Recommendation</th>
             </tr>
@@ -14,22 +14,18 @@
                 <tr>
                     <td>{{cheeseItem.kind}}</td>
                     <td>{{cheeseItem.price}}</td>
-                    <td>{{cheeseItem.winePair}}</td>
-                    <!-- <td>{{ idx + 1 }}. <a [routerLink]="['/cheese/', cheeseItem.id]">{{cheeseItem.winePair}}</a></td> -->
-                 <td>
-                     <button (click)="deleteCheese(cheeseItem.id)">🗑️</button>
-                 </td>
+                    <td>{{cheeseItem.winePair}}</td>                 
                  <td>
                  </td>
                  @if(!cheeseItem.isFavorite){
                      <td>
-                        <button (click)="favoritePairings(cheeseItem.isFavorite)">❤️</button>
+                        <button (click)="favoritePairings({cheeseid: cheeseItem.id, userid: 2, id:0})">❤️</button>
                      </td>                     
                  }                 
              </tr>
          }
          <br>
-         <a [routerLink]="'/favorites/'">Favorite Pairings</a>
+         <!-- <a [routerLink]="'/favorites/'">Favorite Pairings</a> -->
          </tbody>
      </table>
  </div>

@@ -24,9 +24,9 @@ export class ShowCheeseComponent  {
   cheeses$ = this.tntService.getCheeses(); 
   favoritePairings$ = this.tntService.getFavorites(); 
 
- updateFavorites(id: number, cheese: Cheese) {
-    this.router.navigate(['update-favorites', id], { queryParams: cheese });
-  }
+//  updateFavorites(id: number, cheese: Cheese) {
+//     this.router.navigate(['update-favorites', id], { queryParams: cheese });
+//   }
 
   deleteCheese(id: number) {
     this.tntService.deleteCheese(id).subscribe(() => {
@@ -39,7 +39,8 @@ export class ShowCheeseComponent  {
   }
 
   favoritePairings(id: Favorite){
-    this.tntService.postFavorite(id).subscribe(() => {
+    console.log("favoritePairings",id);
+    this.favoritesService.postFavorite(id).subscribe(() => {
       this.cheeses$ = this.tntService.getCheeses();
       this.favoritePairings$ = this.tntService.getFavorites();
     });

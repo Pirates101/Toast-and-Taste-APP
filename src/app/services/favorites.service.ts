@@ -12,7 +12,7 @@ export class FavoritesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl = `${environment.apiDomain}/api/Favorites`;
+  baseUrl = `${environment.apiDomain}/api/Favorite`;
 
   addFavorite(favorite: PostFavoriteModel): Observable<Favorite> {
     return this.httpClient.post<Favorite>(this.baseUrl, favorite); 
