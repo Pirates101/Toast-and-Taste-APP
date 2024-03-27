@@ -30,13 +30,5 @@ export class AppComponent {
   get currentLastName(){
     return this.usersService.currentLastName;
   }
-
-  get currentEmail(){
-    return this.usersService.currentEmail;
-  }
-
-  get currentPassword(){
-    return this.usersService.currentPassword;
-  }
   
 }

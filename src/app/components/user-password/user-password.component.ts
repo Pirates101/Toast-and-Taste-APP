@@ -24,6 +24,7 @@ export class UserPasswordComponent {
   currentpassword: string = "";
   newpassword: string = "";
   confirmnewpassword: string = "";
+  password: string = "";
 
   paramsSubscription!: Subscription;
   userInfo: User | null = null;
@@ -54,6 +55,8 @@ export class UserPasswordComponent {
         lastName: this.usersService.currentLastName,
         userPassword: this.newpassword
       }
+
+      this.usersService.currentPassword = this.newpassword;
   
       this.usersService.updateUser(updatedUser, this.usersService.currentUserId).subscribe(() => {
         alert("Password has been updated.");
