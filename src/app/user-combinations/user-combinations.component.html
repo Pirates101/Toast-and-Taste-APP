@@ -1,18 +1,24 @@
-<form (ngSubmit)="userCombinationSubmit()">
 
-    <div class="form-group">
-		<label for="title">Cheese</label>
-		<input type="number" id="Cheese" [(ngModel)]="Cheese" name="Cheese" required>
-	</div>
-    <div class="form-group">
-		<label for="title">Wine</label>
-		<input type="text" id="Wine" [(ngModel)]="Wine" name="Wine" required>
-	</div>
-    <div class="form-group">
-		<label for="title">Taste Notes</label>
-		<input type="text" id="tasteNotes" [(ngModel)]="Notes" name="tasteNotes" required>
-	</div>
 
-</form>
-  <button (click)="saveCombination()">Save Combination</button>
+<div class="container">
+	<h2>Favorite Wine and Cheese Pairings</h2>
+	<form (submit)="savePairing()">
+	  <div class="form-group">
+		<label for="wine">Favorite Wine:</label>
+		<input type="text" class="form-control" id="wine" name="wine" [(ngModel)]="wine" required>
+	  </div>
+	  <div class="form-group">
+		<label for="cheese">Favorite Cheese:</label>
+		<input type="text" class="form-control" id="cheese" name="cheese" [(ngModel)]="cheese" required>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Save Pairing</button>
+	</form>
+  
+	<h3>Saved Pairings</h3>
+	<ul>
+	  <li *ngFor="let pairing of pairings">
+		{{ pairing.wine }} - {{ pairing.cheese }}
+	  </li>
+	</ul>
+  </div>
   
