@@ -1,23 +1,27 @@
+// user-combinations.service.ts
+
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserCombinationsService {
-  combinations: { cheese: string, wine: string }[] = [];
+  private pairings: { wine: string, cheese: string }[] = [];
+  private pairingAddedSubject = new Subject<{ wine: string, cheese: string }>();
+
   constructor() { }
 
-  saveCombination(cheese: string, wine: string): void {
-    this.combinations.push({ cheese, wine });
+  savePairing(wine: string, cheese: string): void {
+    this.pairings.push({ wine, cheese });
+    this.pairingAddedSubject.next({ wine, cheese });
   }
 
-  getCombinations(): { cheese: string, wine: string }[] {
-    return this.combinations;
+  getPairings(): { wine: string, cheese: string }[] {
+    return this.pairings;
   }
 
-  deleteCombination(index: number): void {
-    if (index >= 0 && index < this.combinations.length) {
-      this.combinations.splice(index, 1);
-    }
+  pairingAdded(): Observable<{ wine: string, cheese: string }> {
+    return this.pairingAddedSubject.asObservable();
   }
 }

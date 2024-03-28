@@ -10,6 +10,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserLogOffComponent } from './components/user-log-off/user-log-off.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserPasswordComponent } from './components/user-password/user-password.component';
+import { UserCombinationsComponent } from './user-combinations/user-combinations.component';
 
 
 export const routes: Routes = [
@@ -38,6 +39,10 @@ export const routes: Routes = [
 		path: 'userform',
 		component: UserFormComponent
 	},
+	{
+		path: 'usercombinations',
+		component: UserCombinationsComponent
+	},
     {
 		path: 'userform/:username',
 		component: UserFormComponent
@@ -57,6 +62,7 @@ export const routes: Routes = [
 		path: '**', 
 		component: PageNotFoundComponent
 	}
+
 
 
 ];

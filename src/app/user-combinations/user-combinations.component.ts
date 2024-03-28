@@ -1,25 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserCombinationsService } from '../user-combinations.service';
+import { Subscription } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-combinations',
-  standalone: true,
-  imports: [],
   templateUrl: './user-combinations.component.html',
-  styleUrl: './user-combinations.component.css'
+  styleUrls: ['./user-combinations.component.css'],
+  imports: [FormsModule, CommonModule],
+  standalone: true,
 })
+export class UserCombinationsComponent implements OnInit, OnDestroy {
+  wine!: string;
+  cheese!: string;
+  pairings: { wine: string, cheese: string }[];
+  pairingSubscription!: Subscription;
 
-export class UserCombinationsComponent {
-  selectedCheese: string | undefined;
-  selectedWine: string | undefined;
+  constructor(private userCombinationsService: UserCombinationsService) {
+    this.pairings = [];
+  }
 
-  constructor(private combinationService: UserCombinationsService) {}
-
-  saveCombination(): void {
-    if (this.selectedCheese && this.selectedWine) {
-      this.combinationService.saveCombination(this.selectedCheese, this.selectedWine);
-      this.selectedCheese = '';
-      this.selectedWine = '';
+  ngOnInit() {
+    if (!this.pairingSubscription) {
+      this.pairingSubscription = this.userCombinationsService.pairingAdded().subscribe((pairing: { wine: string; cheese: string; }) => {
+        this.pairings.push(pairing);
+      });
     }
+  }
+
+  ngOnDestroy() {
+    if (this.pairingSubscription) {
+      this.pairingSubscription.unsubscribe();
+    }
+  }
+
+  savePairing() {
+    this.userCombinationsService.savePairing(this.wine, this.cheese);
+    this.wine = ''; // Clear input fields after saving
+    this.cheese = '';
   }
 }
