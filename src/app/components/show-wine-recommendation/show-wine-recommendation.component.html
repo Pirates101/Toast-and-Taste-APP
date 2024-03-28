@@ -1,14 +1,35 @@
 <form (ngSubmit)="handleSubmit()">
     <label for="wineQuery">Search for a wine</label>
     <input type="text" name="wineQuery" [(ngModel)]="wineQuery"/>
+    <label for="maxPrice">Max price</label>
+    <input type="number" name="maxPrice" [(ngModel)]="maxPrice"/>
     <button type="submit">Get recommendation</button>
 </form>
 
 @if (wineRecommendation$ | async; as wineRecommendation) {
 @if (wineRecommendation.recommendedWines.length > 0){
-    <h2>Recommendations</h2>
-    <p>{{ wineRecommendation.recommendedWines[0].title }} <button (click)="routeToWineRecommendation(wineRecommendation.recommendedWines[0].id)"> Details </button></p>
-    <p>{{ wineRecommendation.recommendedWines[1].title }}</p>
+<table>
+    <thead>
+        <tr>
+            <th>Wine</th>
+            <th>Rating</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+            <td>{{ wineRecommendation.recommendedWines[0].title }}</td>
+            <td>{{ wineRecommendation.recommendedWines[0].averageRating }}</td>
+            <td>{{ wineRecommendation.recommendedWines[0].price }}</td>
+
+        </tr>
+        
+    </tbody>
+</table>
+
+<img [src]="wineRecommendation.recommendedWines[0].imageUrl" alt="Wine image" />
+
 }
 
 } @else {
