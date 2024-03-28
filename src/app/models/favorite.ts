@@ -1,7 +1,7 @@
 
 export interface Favorite {
     id: number,
-    cheeseid: number,
+    cheeseId: number,
     userid: number,
 }
 export interface PostFavoriteModel {
