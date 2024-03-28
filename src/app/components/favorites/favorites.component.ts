@@ -23,5 +23,10 @@ export class FavoritesComponent {
 
   favorites$ = this.favoritesService.getFavorites();
   cheesePairings$ = this.tntService.getCheeses();
-  
+    
+  deleteFavorite(id: number) {
+    this.favoritesService.deleteFavorite(id).subscribe(() => {
+      this.favorites$ = this.favoritesService.getFavorites();
+    })
+  }  
 }

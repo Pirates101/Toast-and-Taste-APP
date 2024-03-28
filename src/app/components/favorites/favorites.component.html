@@ -4,7 +4,8 @@
 		<table>
 			<thead>
 			  <tr>
-				<th>Cheese Type</th>	
+				<th>Cheese Type</th>
+				<th></th>	
 				<th>Wine Recommendation</th>			
 			  </tr>
 			</thead>
@@ -14,9 +15,12 @@
 					@if (cheesePairing.id == favorite.cheeseId) {				
 						<tr>
 							<td>{{cheesePairing.kind}}</td>
-							<td>{{cheesePairing.winePair}}</td>	
+							<td>🧀🍷</td>																					
+							<td>{{cheesePairing.winePair}}</td>
+							<td>
+								<button (click)="deleteFavorite(favorite.id)">💔</button>
+						 	</td> 
 						</tr>
-	
 					}
 				}
 			  }

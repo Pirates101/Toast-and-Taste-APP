@@ -11,9 +11,16 @@ export interface PostFavoriteModel {
     
   }
 
-
 export interface FavoriteList {
     id: number;
     cheeseid: number;
     userid: number;
 }
+
+export interface isFavorite {
+    id: number;
+    cheeseid: number;
+    userid: number;
+    isFavorite: boolean;
+}
+
