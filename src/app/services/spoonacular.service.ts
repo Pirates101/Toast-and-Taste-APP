@@ -33,7 +33,7 @@ export class SpoonacularService {
     });
   }
 
-  getWineRecommendation(wineQuery: string): Observable<WineRecommendationResponse> {
+  getWineRecommendation(wineQuery: string,maxPrice: number): Observable<WineRecommendationResponse> {
 
     
   let httpHeaders = new HttpHeaders()
@@ -41,10 +41,12 @@ export class SpoonacularService {
   httpHeaders = httpHeaders.set('x-api-key', 'f2551da4c5434cc4bf924c531e035982');
 
 
-    return this.httpClient.get<WineRecommendationResponse>(`${this.baseUrl}/recommendation?wine=${wineQuery}&number=2`, {
+    return this.httpClient.get<WineRecommendationResponse>(`${this.baseUrl}/recommendation?wine=${wineQuery}&number=1&maxPrice=${maxPrice}`, {
       headers: httpHeaders,
       observe: 'body',
       responseType: 'json',
     });
   }
+
+ 
 }

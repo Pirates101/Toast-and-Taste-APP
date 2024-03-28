@@ -18,12 +18,13 @@ export class ShowWineRecommendationComponent {
     private router: Router) {}
 
   wineQuery: string = '';
+  maxPrice: number = 50;
 
   handleSubmit() {
     
-    this.wineRecommendation$ = this.spoonacularService.getWineRecommendation(this.wineQuery);
+    this.wineRecommendation$ = this.spoonacularService.getWineRecommendation(this.wineQuery,this.maxPrice);
   }
-  wineRecommendation$ = this.spoonacularService.getWineRecommendation(this.wineQuery);
+  wineRecommendation$ = this.spoonacularService.getWineRecommendation(this.wineQuery,this.maxPrice);
 
   routeToWineRecommendation(id: number) {
     this.router.navigate(['wine-recommendation', id]);
