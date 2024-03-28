@@ -1,25 +1,35 @@
 <p>Preferred Wines and Rinds 🍷🧀</p>
-@if (favorites$ | async; as favorite) {
-	<table>
-	  <thead>
-		<tr>
-		  <th></th>
-		
-		  <th>Favorite Combinations</th>
-		</tr>
-	  </thead>
-	  <tbody>
-		@for (favorite of favorite; track favorite) {
-		  <tr>
-			<td>{{ favorite.id }}</td>
-			<td>{{ favorite.cheeseid }}</td>
-			<td>{{ favorite.userid }}</td>
-
-		  </tr>
-		}
-	  </tbody>
-	</table>
-  } @else { 
+@if (favorites$ | async; as favoritePairs) {
+	@if(cheesePairings$ |async; as cheesePairing) {
+		<table>
+			<thead>
+			  <tr>
+				<th>Cheese Type</th>
+				<th></th>	
+				<th>Wine Recommendation</th>			
+			  </tr>
+			</thead>
+			<tbody>
+			  @for (favorite of favoritePairs; track favorite) {
+				@for (cheesePairing of cheesePairing; track cheesePairing) {	
+					@if (cheesePairing.id == favorite.cheeseId) {				
+						<tr>
+							<td>{{cheesePairing.kind}}</td>
+							<td>🧀🍷</td>																					
+							<td>{{cheesePairing.winePair}}</td>
+							<td>
+								<button (click)="deleteFavorite(favorite.id)">💔</button>
+						 	</td> 
+						</tr>
+					}
+				}
+			  }
+			</tbody>
+		</table>			  
+			
+	}
+}	
+  @else { 
 	<div>
 	  <h2>Loading the goods...</h2>
 	</div>
