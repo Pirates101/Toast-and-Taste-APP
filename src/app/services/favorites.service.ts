@@ -24,9 +24,11 @@ export class FavoritesService {
 
   deleteFavorite(id: number) {
     return this.httpClient.delete(`${this.baseUrl}/${id}`);
-  }
+  }  
 
   postFavorite(newFav: Favorite): Observable<Favorite> {
     return this.httpClient.post<Favorite>(this.baseUrl, newFav);
   }
+
+  
 }
