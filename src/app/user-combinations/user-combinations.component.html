@@ -1,24 +1,24 @@
 
 
 <div class="container">
-	<h2>Favorite Wine and Cheese Pairings</h2>
+	<h2>Don't like our picks? What do you like to Toast & Taste?</h2>
 	<form (submit)="savePairing()">
 	  <div class="form-group">
-		<label for="wine">Favorite Wine:</label>
+		<label for="wine">Drink This...</label>
 		<input type="text" class="form-control" id="wine" name="wine" [(ngModel)]="wine" required>
-	  </div>
-	  <div class="form-group">
-		<label for="cheese">Favorite Cheese:</label>
+	
+		<label for="cheese">...With This</label>
 		<input type="text" class="form-control" id="cheese" name="cheese" [(ngModel)]="cheese" required>
 	  </div>
-	  <button type="submit" class="btn btn-primary">Save Pairing</button>
+	  <button type="submit" class="btn btn-primary">Remember These!</button>
 	</form>
   
-	<h3>Saved Pairings</h3>
+	<h3></h3>
 	<ul>
 	  <li *ngFor="let pairing of pairings">
 		{{ pairing.wine }} - {{ pairing.cheese }}
 	  </li>
 	</ul>
   </div>
+  
   
