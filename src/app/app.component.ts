@@ -16,6 +16,8 @@ export class AppComponent {
 
   constructor(private usersService: UsersService){}
 
+
+
   get currentUsername(){
     return this.usersService.currentUsername;
   }
@@ -31,5 +33,6 @@ export class AppComponent {
   get currentLastName(){
     return this.usersService.currentLastName;
   }
+  
   
 }

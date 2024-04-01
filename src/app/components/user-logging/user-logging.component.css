@@ -4,6 +4,7 @@ form{
   padding: 16px 16px 24px;
   box-shadow: 0 2px 32px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
+  color:#d599fb;
 }
 
 div {
@@ -15,7 +16,9 @@ div {
     flex-direction: column;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    background: linear-gradient(to right, lightblue, limegreen);
+    background-color: #7669e9;
+    font-family: fantasy;
+    color: #d599fb;
   }
 
 button{
