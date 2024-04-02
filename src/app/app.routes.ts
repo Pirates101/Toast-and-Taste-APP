@@ -7,7 +7,6 @@ import { ShowWineRecommendationComponent } from './components/show-wine-recommen
 import { UserLoggingComponent } from './components/user-logging/user-logging.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
-import { UserLogOffComponent } from './components/user-log-off/user-log-off.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserPasswordComponent } from './components/user-password/user-password.component';
 import { UserCombinationsComponent } from './user-combinations/user-combinations.component';
@@ -53,11 +52,13 @@ export const routes: Routes = [
 	},
     {
 		path: 'userlogoff',
-		component: UserLogOffComponent
+		redirectTo: 'userlogging', 
+		pathMatch: 'full'
 	},
     {   path: '', 
-	    redirectTo: 'cheeses', 
-		pathMatch: 'full' },
+	    redirectTo: 'userlogging', 
+		pathMatch: 'full' 
+	},
 	{
 		path: '**', 
 		component: PageNotFoundComponent

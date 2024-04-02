@@ -24,6 +24,15 @@ export class UserLoggingComponent {
   paramsSubscription!: Subscription 
   userInfo: User | null = null;
 
+  ngOnInit(): void {
+    this.usersService.currentUserId = 0;   
+    this.usersService.currentUsername = '';  
+    this.usersService.currentEmail = '';
+    this.usersService.currentFirstName = '';
+    this.usersService.currentLastName = '';
+    this.usersService.currentPassword = '';
+  }
+              
   userLogging(){
     if (this.username && this.userpassword){
       this.paramsSubscription = this.activatedRoute.params.subscribe(() => {

@@ -1,49 +1,49 @@
+<nav class="user-nav">
+  @if (this.currentUsername){
+
+    <div class="dropdown">
+      <button class="dropbtn">{{this.currentFirstName}} {{this.currentLastName}} 👤</button>
+      <div class="dropdown-content">
+        <a [routerLink]="['/userform/', this.currentUsername]">Edit profile</a>
+        <a [routerLink]="'/userpassword'">Change password</a>        
+        <a [routerLink]="'/userlogoff'">Log out</a>
+      </div>
+    </div>      
+  }
+  @else {
+      <div class="dropdown">
+          <button class="dropbtn"></button>
+          <div class="dropdown-content">
+              <a [routerLink]="'/userlogging'">Mongers Only</a>
+             </div>
+              <div class="dropdown-content">
+                
+                <a [routerLink]="'/userform'">Become a Monger</a>
+          </div>
+      </div>    
+  }
+</nav>
+
 <header>
   <h1>Toast & Taste 🍾</h1>
 </header>
-<nav>
-  <div class="column">
-      <a [routerLink]="'/cheeses'">Wines and Rinds</a>
-  </div>
-  <div class="column">
-      <a [routerLink]="'/wineDescription'">Libation Library</a>
-  </div>
-  <div class="column">
-    <a [routerLink]="'/wineRecommendation'">Sommelier's Selections</a>
-</div>
-  <div class="column">
-      <a [routerLink]="'/usercombinations'">Pairing Playground</a>
-  </div>
-</nav>
-
-
 
 <div class="login-container">
-  <nav class="user-nav">
+  <nav>
       @if (this.currentUsername){
-          <div class="dropdown">
-              <button class="dropbtn">{{this.currentFirstName}} {{this.currentLastName}} 👤</button>
-              <div class="dropdown-content">
-                  <a [routerLink]="['/userform/', this.currentUsername]">Edit profile</a>
-                  <a [routerLink]="'/userpassword'">Change password</a>        
-                  <a [routerLink]="'/userlogoff'">Log out</a>
-              </div>
-          </div>
-          <a [routerLink]="'/favorites'">Perfect Pairings</a>
-          
-      }
-      @else {
-          <div class="dropdown">
-              <button class="dropbtn"></button>
-              <div class="dropdown-content">
-                  <a [routerLink]="'/userlogging'">Mongers Only</a>
-                 </div>
-                  <div class="dropdown-content">
-                    
-                    <a [routerLink]="'/userform'">Become a Monger</a>
-              </div>
-          </div>    
-      }
+        <div class="column">
+          <a [routerLink]="'/cheeses'">Wines and Rinds</a>
+        </div>
+        <div class="column">
+          <a [routerLink]="'/wineDescription'">Libation Library</a>
+        </div>
+        <div class="column">
+          <a [routerLink]="'/wineRecommendation'">Sommelier's Selections</a>
+        </div>
+        <div class="column">
+          <a [routerLink]="'/usercombinations'">Pairing Playground</a>
+        </div>          
+      }      
   </nav>
 </div>
 <main>
