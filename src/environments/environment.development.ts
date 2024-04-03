@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-	apiDomain: 'https://localhost:7005'
+	apiDomain: 'https://toastandtaste20240328213226.azurewebsites.net"'
 };
