@@ -34,7 +34,7 @@ nav {
 
 .login-container {
   text-align: center;
-  background-color: #7669e9;
+  background-color: #5e1af4;
   display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,4 +52,4 @@ nav {
   display: inline-block;
 }
 
-/* Rest of your CSS styles for dropdown menu, etc. */
+

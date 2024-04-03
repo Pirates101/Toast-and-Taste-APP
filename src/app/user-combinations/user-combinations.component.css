@@ -44,7 +44,7 @@ button {
   }
 
   form {
-    background-color: #6219f6;
+    background-color: #5e1af4;
     padding-left: 10rem;
     padding-right: 10rem;
     padding-top: 2rem;
@@ -52,6 +52,7 @@ button {
     display: flex;
     align-items: center;
     flex-direction: column;
+    border-radius: 10px;
     .form-control {
         width: 200px; 
         height: 30px; 
@@ -65,8 +66,7 @@ button {
     }
     
     .form-group label {
-        flex: 0 0 150px; /* Adjust the width of the labels */
-        margin-right: 1px; /* Adjust the spacing between label and input */
-    }
+        flex: 0 0 150px; 
+        margin-right: 1px; 
     
-  }
+  }}

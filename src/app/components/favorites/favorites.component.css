@@ -5,9 +5,9 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    background: linear-gradient(90.5deg, rgb(247, 204, 0) 0.2%, rgb(247, 0, 0) 27.3%, rgb(161, 0, 156) 85.5%);
-    font-family: pacifico;
-    color: #f1fa3c;
+    background-color: #ff6230;
+    font-family: fantasy;
+    color:#f8bcca;
     font-size: 2rem;
     line-height: 1.5;
     padding: 1rem
