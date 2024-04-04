@@ -7,5 +7,7 @@ h1{
     flex-direction: column;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    background: linear-gradient(to right, lightblue, limegreen);
+    background-color: #ff6230;
+    font-family: fantasy;
+    color:#f8bcca;
 }
