@@ -20,15 +20,16 @@
         
         <tr>
             <td>{{ wineRecommendation.recommendedWines[0].title }}</td>
-            <td>{{ wineRecommendation.recommendedWines[0].averageRating }}</td>
+            <td>{{ wineRecommendation.recommendedWines[0].averageRating.toFixed(2) }}</td>
             <td>{{ wineRecommendation.recommendedWines[0].price }}</td>
 
         </tr>
         
     </tbody>
+  
 </table>
 
-<img [src]="wineRecommendation.recommendedWines[0].imageUrl" alt="Wine image" />
+
 
 }
 
